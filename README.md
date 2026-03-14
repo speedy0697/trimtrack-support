@@ -1,4 +1,4 @@
-# ✂️ TrimTrack — Support & Privacy
+# ✂️ Trim Track — Support & Privacy
 
 > Track every haircut, monitor your grooming spending, and preview new hairstyles with AI.
 
