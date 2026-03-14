@@ -1,145 +1,93 @@
-# ✂️ TrimTrack — Haircut Tracker & AI Stylist
+# ✂️ TrimTrack — Support & Privacy
 
-> Track every haircut, monitor your grooming spending, and preview new hairstyles with AI — all in one app.
+> Track every haircut, monitor your grooming spending, and preview new hairstyles with AI.
 
-## Why This Exists
+## About TrimTrack
 
-Remembering what you told your barber, tracking how much you spend on haircuts, and exploring new looks shouldn't require a spreadsheet. TrimTrack is a modern mobile app that turns your grooming routine into organized, visual data you can act on.
+TrimTrack is a mobile app that helps you keep a detailed history of your haircuts — complete with photos, barber info, spending analytics, and an AI-powered hairstyle previewer.
 
-## ✨ Features
+### Features
 
-### 💇‍♂️ Haircut Journaling
-- Log detailed entries with style name, price, date, and personal notes
-- Attach up to 4 photos per entry — show your barber exactly what you want
-- 5-star rating system to remember your best (and worst) cuts
-- Filter and sort your full haircut history
+- **Haircut Journaling** — Log every cut with photos, price, style, barber, barbershop, rating, and notes
+- **AI Stylist** — Upload a selfie and preview new hairstyles before committing
+- **Spending Analytics** — Interactive charts and projected spending trends
+- **Cloud Sync** — Your data syncs across devices and works offline
+- **Secure Authentication** — Sign in with Google
 
-### 💈 Barber & Barbershop Tracking
-- Track which barbers and barbershops you visit
-- Build a personal directory of your go-to spots
-- Associate each haircut with a barber and location
+---
 
-### 🤖 AI Stylist
-- Upload a selfie and preview yourself with a new hairstyle
-- Choose from preset styles or describe your own custom look
-- Powered by Google Gemini via a secure server-side Edge Function
-- Save AI-generated previews to your gallery
-- Rate-limited by tier (daily, weekly, monthly quotas)
+## Frequently Asked Questions
 
-### 📊 Spending Analytics
-- Interactive charts showing spending trends over time
-- Projected spending based on your haircut frequency
-- Tap data points to see detailed breakdowns (date, amount, cumulative vs. projected)
-- Track total spend, average cost per cut, and days since last visit
+**Is TrimTrack free?**
+Yes! TrimTrack is free to download and use. AI Stylist generations are subject to daily limits depending on your tier.
 
-### ☁️ Cloud Sync & Offline Support
-- Seamless data sync across devices via Supabase
-- Offline-first architecture — log entries without connectivity
-- Automatic data migration from local storage to cloud on sign-in
+**What data do you collect?**
+Only what you provide: your Google account email for sign-in, haircut entries, and uploaded photos. See the Privacy Policy below for full details.
 
-### 🔐 Security & Privacy
-- Google OAuth sign-in
-- All AI processing runs server-side — no API keys exposed to the client
-- Row Level Security (RLS) on all database tables
-- Input validation and sanitization on all forms
-- Private photo storage with scoped access
+**Can I delete my account and data?**
+Yes. Go to **Settings → Delete Account** to permanently remove your account and all associated data.
 
-## 🛠️ Tech Stack
+**What devices are supported?**
+TrimTrack is available on iOS. Android support is planned for a future release.
 
-| Layer | Technology |
-|-------|-----------|
-| **Framework** | [React Native](https://reactnative.dev/) via [Expo](https://expo.dev/) (SDK 54) |
-| **Routing** | [Expo Router](https://docs.expo.dev/router/introduction/) (file-based) |
-| **Backend** | [Supabase](https://supabase.com/) (PostgreSQL, Auth, Edge Functions, Storage) |
-| **AI** | [Google Gemini](https://ai.google.dev/) via Supabase Edge Function |
-| **UI** | Custom themed components, Dark/Light mode, `react-native-reanimated`, `expo-linear-gradient` |
-| **Charts** | `react-native-chart-kit` with `react-native-svg` |
+**Does the AI Stylist store my photos?**
+Photos you upload for AI styling are processed securely on our servers and stored in your private account. They are never shared or made public.
 
-## 🚀 Getting Started
+---
 
-### Prerequisites
+## Privacy Policy
 
-- Node.js v18+
-- npm
-- Expo CLI (`npm install -g expo-cli`)
-- Expo Go app on your device (or iOS Simulator / Android Emulator)
-- A [Supabase](https://supabase.com/) project
-- A [Google Gemini API key](https://ai.google.dev/)
+**Last updated:** March 13, 2026
 
-### 1. Clone & Install
+### What We Collect
 
-```bash
-git clone https://github.com/speedy0697/trimtrack.git
-cd trimtrack
-npm install
-```
+| Data | Purpose | Storage |
+|------|---------|---------|
+| Google account email | Authentication & account identification | Supabase (encrypted) |
+| Haircut entries | Core app functionality (dates, prices, styles, notes, ratings) | Supabase (encrypted) |
+| Photos | Haircut journaling and AI Stylist previews | Supabase Storage (private) |
+| Usage analytics | App improvement (anonymous event counts only) | Supabase |
 
-### 2. Environment Variables
+### What We Don't Do
 
-Create a `.env` file in the project root:
+- ❌ We do **not** sell your data to third parties
+- ❌ We do **not** share your photos or personal information
+- ❌ We do **not** serve advertisements
+- ❌ We do **not** track your location
 
-```env
-# Supabase
-EXPO_PUBLIC_SUPABASE_URL=your_supabase_project_url
-EXPO_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+### Data Security
 
-# Google OAuth (for Google Sign-In)
-EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID=your_google_web_client_id
-```
+- All data is transmitted over HTTPS
+- Photos are stored in **private** storage buckets accessible only to your account
+- AI processing is handled via secure server-side functions — no API keys are exposed to your device
+- Database access is protected by Row Level Security (each user can only access their own data)
 
-> **Note:** The Gemini API key is stored as a Supabase Edge Function secret and is **never** exposed to the client. Set it via:
-> ```bash
-> supabase secrets set GEMINI_API_KEY=your_key
-> ```
+### Your Rights
 
-### 3. Database Setup
+You have the right to:
+- **Access** your data at any time through the app
+- **Delete** your account and all associated data via **Settings → Delete Account**
 
-Run the SQL migration scripts in your Supabase SQL editor, in order:
+### Children's Privacy
 
-1. `supabase/migrations/001_initial_schema.sql` — Core tables (`profiles`, `haircuts`, `barbershops`, `barbers`, `haircut_photos`), RLS policies, and auto-profile trigger
-2. `supabase/migrations/002_add_generation_limits.sql` — AI generation rate limiting and subscription tiers
-3. `supabase/migrations/003_add_generation_history.sql` — AI generation history tracking
+TrimTrack is not intended for children under 13. We do not knowingly collect data from children under 13.
 
-### 4. Run the App
+### Changes to This Policy
 
-```bash
-npx expo start --clear
-```
+We may update this Privacy Policy from time to time. Changes will be reflected on this page with an updated date.
 
-- Press `i` for iOS Simulator
-- Press `a` for Android Emulator
-- Scan the QR code with Expo Go on your device
+### Contact
 
-## 📁 Project Structure
+For questions, concerns, or data requests, contact us at:
 
-```
-src/
-├── app/                  # Expo Router screens
-│   ├── (tabs)/           # Tab navigation (Home, Add, AI Stylist, Analytics, Settings)
-│   ├── auth.tsx          # Authentication screen
-│   ├── edit/             # Edit haircut flow
-│   └── ai-history.tsx    # AI generation history
-├── components/           # Reusable UI components
-│   ├── EntryForm.tsx     # Multi-step haircut entry form
-│   ├── HaircutCard.tsx   # Haircut list item
-│   ├── HomeHeader.tsx    # Hero card with days-since-last-cut
-│   ├── AIGenerationCard  # AI result display
-│   ├── FilterModal.tsx   # Haircut filtering
-│   ├── StarRating.tsx    # 5-star rating component
-│   ├── Toast.tsx         # Toast notifications
-│   ├── ErrorBoundary.tsx # Crash-safe error handling
-│   └── LoadingSpinner.tsx
-├── constants/            # Theme colors and typography
-├── contexts/             # React Context (AuthContext)
-├── hooks/                # Custom hooks
-├── lib/                  # Supabase client initialization
-├── services/             # API layers
-│   ├── aiService.ts      # AI Stylist (Gemini via Edge Function)
-│   └── database.ts       # Supabase CRUD operations
-├── types/                # TypeScript type definitions
-└── utils/                # Helpers (storage, validation, logger)
-```
+📧 **trimtrack@icloud.com**
 
-## 📄 License
+---
 
-This project is proprietary.
+## Contact & Support
+
+Having issues with TrimTrack? Reach out:
+
+- 📧 Email: **trimtrack@icloud.com**
+
+We typically respond within 48 hours.
