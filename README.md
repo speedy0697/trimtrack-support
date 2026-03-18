@@ -26,7 +26,7 @@ TrimTrack is a mobile app that helps you keep a detailed history of your haircut
 
 **What devices are supported?** TrimTrack is available on iOS. Android support is planned for a future release.
 
-**Does the AI Stylist store my photos?** Photos you upload for AI styling are processed securely via a server-side function and stored in your private account. They are never shared or made public.
+**Does the AI Stylist store my photos?** Before using the AI Stylist for the first time, you are asked to consent to sharing your photo and style description with Google Gemini AI. Photos are processed securely via a server-side function and stored in your private account. They are never shared or made public beyond the AI processing you consented to.
 
 **How do subscriptions work?** TrimTrack Pro is available as an in-app purchase managed through the App Store. You can manage or cancel your subscription at any time via your Apple ID settings.
 
@@ -43,7 +43,7 @@ TrimTrack is a mobile app that helps you keep a detailed history of your haircut
 | Account email and display name | Authentication and account identification | Supabase (encrypted) |
 | Haircut entries | Core app functionality (dates, prices, styles, notes, ratings, duration) | Supabase (encrypted) |
 | Photos | Haircut journaling and AI Stylist previews | Supabase Storage (private buckets, signed URLs) |
-| AI Stylist prompts and results | Hairstyle preview generation and history | Supabase (encrypted) |
+| AI Stylist photos and prompts | Sent to Google Gemini AI for hairstyle generation (with your explicit consent) and stored in your private history | Google Gemini (processing only, not retained); Supabase (encrypted storage) |
 | Subscription status | Manage Pro tier access and AI generation limits | RevenueCat and Supabase |
 
 ### Device Permissions
@@ -63,6 +63,16 @@ TrimTrack's **AI Stylist** feature allows you to upload a selfie to preview how 
 #### What Face Data We Collect
 
 When you use the AI Stylist feature, you provide a single selfie photo. The photo is compressed on your device (resized to a maximum of 1024 pixels wide and converted to JPEG format) before being transmitted. **TrimTrack does not extract, store, or process facial landmarks, facial geometry, face embeddings, or any biometric identifiers.** The photo is used solely as a visual reference image.
+
+#### User Consent Before Data Sharing
+
+Before the AI Stylist sends any data to a third-party service, TrimTrack displays a clear consent dialog explaining:
+
+* **What data is sent:** Your photo and hairstyle description.
+* **Who it is sent to:** Google Gemini AI.
+* **What is not sent:** Your name, email, haircut history, or any other personal data.
+
+You must explicitly agree by tapping **"I Agree"** before any data leaves your device. This consent is requested once; you can continue to use the AI Stylist after agreeing. If you decline, no data is sent and the feature is not used. A persistent disclosure is also displayed on the AI Stylist screen near the Generate button, reminding you that your photo and style description are processed by Google Gemini AI.
 
 #### How Face Data Is Used
 
@@ -103,7 +113,7 @@ TrimTrack uses the following third-party services to operate:
 |---------|---------|-------------|
 | **Supabase** | Database, authentication, and file storage | Account info, haircut data, photos |
 | **RevenueCat** | Subscription and in-app purchase management | User ID, entitlement/subscription status |
-| **Google Gemini** (via server-side function) | AI hairstyle generation | Uploaded selfie photo and style description (processed server-side; see [Face & Photo Data](#face--photo-data) for details) |
+| **Google Gemini** (via server-side function) | AI hairstyle generation | Uploaded selfie photo and style description only, shared **with your explicit in-app consent** (processed server-side; see [Face & Photo Data](#face--photo-data) for details) |
 | **Apple Sign-In / Google OAuth** | Authentication | Email and name (per provider's terms) |
 
 ### What We Don't Do
