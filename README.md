@@ -158,7 +158,7 @@ We may update this Privacy Policy from time to time. Changes will be reflected o
 
 For questions, concerns, or data requests — including requests related to face data — contact us at:
 
-**trimtrack@icloud.com**
+**trimtrack.support@proton.me**
 
 ---
 
@@ -166,6 +166,6 @@ For questions, concerns, or data requests — including requests related to face
 
 Having issues with TrimTrack? Reach out:
 
-* Email: **trimtrack@icloud.com**
+* Email: **trimtrack.support@proton.me**
 
 We typically respond within 48 hours.
