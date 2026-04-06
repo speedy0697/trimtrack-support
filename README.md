@@ -20,21 +20,27 @@ TrimTrack is a mobile app that helps you keep a detailed history of your haircut
 
 **Is TrimTrack free?** Yes! TrimTrack is free to download and use. A Pro subscription unlocks higher AI Stylist generation limits.
 
-**What data do you collect?** Only what you provide: your account email (from Google, Apple, or email sign-up), haircut entries, and uploaded photos. See the Privacy Policy below for full details.
-
-**Can I delete my account and data?** Yes. Go to **Settings → Delete Account** to permanently remove your account and all associated data.
+**What data do you collect?** Your account email, haircut entries, uploaded photos, and anonymized usage analytics. See the Privacy Policy below for full details.
 
 **What devices are supported?** TrimTrack is available on iOS. Android support is planned for a future release.
 
+**What sign-in options are available?** You can sign in with Google, Apple, or email and password.
+
 **Does the AI Stylist store my photos?** Before using the AI Stylist for the first time, you are asked to consent to sharing your photo and style description with Google Gemini AI. Photos are processed securely via a server-side function and stored in your private account. They are never shared or made public beyond the AI processing you consented to.
 
-**How do subscriptions work?** TrimTrack Pro is available as an in-app purchase managed through the App Store. You can manage or cancel your subscription at any time via your Apple ID settings.
+**How do subscriptions work?** TrimTrack Pro is available as a monthly or annual in-app purchase managed through the App Store. Some plans include a free trial period. You can manage or cancel your subscription at any time via **Settings → Apple ID → Subscriptions** on your device.
+
+**How do I restore a previous purchase?** Go to **Settings → Restore Purchases** inside the app. This reconnects your App Store purchase to your account and restores your Pro access.
+
+**Can I delete my account and data?** Yes. Go to **Settings → Delete Account** to permanently remove your account and all associated data. **Important:** deleting your account does **not** cancel your App Store subscription. You must cancel it separately via your device's **Settings → Apple ID → Subscriptions** to avoid future charges.
+
+**Why am I still being charged after deleting my account?** App Store subscriptions are billed by Apple and are independent of your TrimTrack account. To stop billing, cancel the subscription in your device **Settings → Apple ID → Subscriptions** before or after deleting your account.
 
 ---
 
 ## Privacy Policy
 
-**Last updated:** March 17, 2026
+**Last updated:** April 6, 2026
 
 ### What We Collect
 
@@ -44,7 +50,8 @@ TrimTrack is a mobile app that helps you keep a detailed history of your haircut
 | Haircut entries | Core app functionality (dates, prices, styles, notes, ratings, duration) | Supabase (encrypted) |
 | Photos | Haircut journaling and AI Stylist previews | Supabase Storage (private buckets, signed URLs) |
 | AI Stylist photos and prompts | Sent to Google Gemini AI for hairstyle generation (with your explicit consent) and stored in your private history | Google Gemini (processing only, not retained); Supabase (encrypted storage) |
-| Subscription status | Manage Pro tier access and AI generation limits | RevenueCat and Supabase |
+| Subscription status and metadata | Manage Pro tier access and AI generation limits | RevenueCat and Supabase |
+| Anonymized usage analytics | Understand feature usage and improve the app | PostHog (no personally identifying information) |
 
 ### Device Permissions
 
@@ -55,6 +62,18 @@ TrimTrack may request the following device permissions:
 * **Notifications** — To notify you when an AI generation completes (local notifications only; no remote push)
 
 These permissions are requested only when needed and can be revoked at any time in your device settings.
+
+### Analytics & Usage Data
+
+TrimTrack uses **PostHog** to collect anonymized analytics that help us understand how the app is used and identify areas for improvement. Analytics are linked to your account ID (not your email or name) and include:
+
+* App lifecycle events (app opened, became active, went to background)
+* Feature interactions (haircut saved, AI generation started/completed, CSV exported)
+* Authentication method used (Google, Apple, or email — no credentials)
+* Subscription events (paywall viewed, purchase completed, subscription restored)
+* Screen navigation
+
+We do **not** send your name, email address, photos, haircut content, or notes to PostHog. Analytics data is used solely to improve the app experience and is never sold or shared with advertisers.
 
 ### Face & Photo Data
 
@@ -112,9 +131,10 @@ TrimTrack uses the following third-party services to operate:
 | Service | Purpose | Data Shared |
 |---------|---------|-------------|
 | **Supabase** | Database, authentication, and file storage | Account info, haircut data, photos |
-| **RevenueCat** | Subscription and in-app purchase management | User ID, entitlement/subscription status |
+| **RevenueCat** | Subscription and in-app purchase management | User ID, subscription tier, product ID, purchase and expiry dates |
 | **Google Gemini** (via server-side function) | AI hairstyle generation | Uploaded selfie photo and style description only, shared **with your explicit in-app consent** (processed server-side; see [Face & Photo Data](#face--photo-data) for details) |
 | **Apple Sign-In / Google OAuth** | Authentication | Email and name (per provider's terms) |
+| **PostHog** | Anonymized usage analytics | Account ID and anonymized feature interaction events (no email, name, photos, or content) |
 
 ### What We Don't Do
 
@@ -124,7 +144,7 @@ TrimTrack uses the following third-party services to operate:
 * We do **not** share your photos or personal information with advertisers or data brokers
 * We do **not** serve advertisements
 * We do **not** track your location
-* We do **not** collect analytics or usage tracking data
+* We do **not** send your name, email address, or personal content to analytics services
 
 ### Data Security
 
@@ -146,6 +166,8 @@ You have the right to:
 * **Delete** individual AI generations (including selfies) from the AI History screen
 * **Delete** your account and all associated data via **Settings → Delete Account**
 
+For additional data requests (e.g. data export), contact us at **trimtrack.support@proton.me**.
+
 ### Children's Privacy
 
 TrimTrack is not intended for children under 13. We do not knowingly collect data from children under 13.
@@ -157,6 +179,64 @@ We may update this Privacy Policy from time to time. Changes will be reflected o
 ### Contact
 
 For questions, concerns, or data requests — including requests related to face data — contact us at:
+
+**trimtrack.support@proton.me**
+
+---
+
+## Terms of Service
+
+**Last updated:** April 6, 2026
+
+By downloading or using TrimTrack, you agree to these Terms of Service. If you do not agree, do not use the app.
+
+### 1. Use of the App
+
+TrimTrack is provided for personal, non-commercial use. You must be at least 13 years old to use the app. You agree not to misuse the app, circumvent its security measures, or use it to harm others.
+
+### 2. Your Account
+
+You are responsible for maintaining the security of your account credentials. You are responsible for all activity that occurs under your account. Notify us at **trimtrack.support@proton.me** if you suspect unauthorized access.
+
+### 3. Subscriptions & Billing
+
+TrimTrack offers a free tier and an optional **Pro** subscription available as a monthly or annual in-app purchase through the App Store.
+
+* Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current period.
+* You can manage or cancel your subscription at any time in your device **Settings → Apple ID → Subscriptions**.
+* **Deleting your TrimTrack account does not cancel your App Store subscription.** You must cancel it separately to avoid future charges.
+* Refunds are subject to Apple's refund policy. Contact Apple Support for billing disputes.
+
+### 4. User Content
+
+You retain ownership of content you upload (photos, haircut notes, etc.). By using TrimTrack, you grant us a limited license to store and process your content solely to provide the service to you. We do not use your personal content for advertising, training AI models, or any other purpose.
+
+### 5. AI Stylist
+
+The AI Stylist feature is provided for entertainment and personal exploration only. AI-generated hairstyle previews are not a substitute for professional styling advice. Results may not accurately represent how a hairstyle will look in person. By using this feature, you consent to your photo and style description being sent to Google Gemini AI as described in our Privacy Policy.
+
+### 6. Acceptable Use
+
+You agree not to:
+
+* Upload content that is illegal, harmful, or violates others' rights
+* Attempt to reverse-engineer, modify, or tamper with the app
+* Use the app to harass or harm others
+* Circumvent rate limits or subscription restrictions
+
+### 7. Termination
+
+We reserve the right to suspend or terminate your account if you violate these Terms. You may delete your account at any time via **Settings → Delete Account**.
+
+### 8. Disclaimers
+
+TrimTrack is provided "as is" without warranties of any kind. We do not guarantee uninterrupted service, and we are not liable for any data loss, service outages, or indirect damages arising from use of the app.
+
+### 9. Changes to Terms
+
+We may update these Terms from time to time. Continued use of the app after changes are posted constitutes acceptance of the updated Terms.
+
+### 10. Contact
 
 **trimtrack.support@proton.me**
 
